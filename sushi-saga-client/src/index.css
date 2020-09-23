@@ -13,7 +13,7 @@ body {
   grid-template-areas: 
       ". . . . ."
       ". bt bt bt ."
-      ". . rm . ."
+      ". rm w . ."
       ". tb tb tb .";
 }
 
@@ -80,5 +80,10 @@ body {
   background-position: center;
   height: 428px;
   width: 700px;
+  margin: auto;
+}
+
+.wallet {
+  grid-area: w;
   margin: auto;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SushiContainer from './containers/SushiContainer';
 import Table from './containers/Table';
+import SushiWallet from './containers/SushiWallet';
 
 const API = "http://localhost:3000/sushis"
 
@@ -10,7 +11,8 @@ class App extends Component {
     sushis: [],
     fourSushis: [],
     selectedSushis: [],
-    moneyLeft: 100
+    moneyLeft: 100,
+    newMoney: 0
   }
 
   componentDidMount(){
@@ -29,6 +31,10 @@ class App extends Component {
         <Table 
           selectedSushis={this.state.selectedSushis}
           moneyLeft={this.state.moneyLeft}
+        />
+        <SushiWallet 
+          addAmount={this.addAmount}
+          updateMoneyLeft={this.updateMoneyLeft}
         />
       </div>
     );
@@ -62,6 +68,22 @@ class App extends Component {
     this.setState({
       fourSushis: onlyNew.sort(() => Math.random() - Math.random()).slice(0, 4)
     })
+  }
+
+  addAmount = (newMoney) => {
+    this.setState({
+      newMoney: newMoney
+    })
+  }
+
+  updateMoneyLeft = ()=>{
+    let moneyLeft = this.state.moneyLeft
+    let newMoney = parseFloat(this.state.newMoney,10)
+    if(newMoney > 0 && Number.isInteger(newMoney)){
+      this.setState({
+        moneyLeft: moneyLeft += newMoney
+      })
+    }
   }
 
 }
