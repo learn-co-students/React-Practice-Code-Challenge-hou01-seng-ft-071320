@@ -13,7 +13,7 @@ body {
   grid-template-areas: 
       ". . . . ."
       ". bt bt bt ."
-      ". rm w . ."
+      ". rm . w ."
       ". tb tb tb .";
 }
 
