@@ -24,10 +24,19 @@ class App extends Component {
       })
     }
   renderNext=()=>{
-    this.setState({
+    console.log(this.state.sushiData.length)
+    console.log(this.state.count)
+    if(this.state.sushiData.length-8 >this.state.count)
+    {this.setState({
       count: this.state.count+4,
       showingSushi: this.state.sushiData.slice(this.state.count+4,this.state.count+8)}
-    )
+    )}
+    else{
+      this.setState({
+        count:0,
+        showingSushi: this.state.sushiData.slice(this.state.count+4,this.state.count+8)}
+      )
+    }
   }
   removeSushi=(selectedSushi)=>{
     if (this.state.budget >= selectedSushi.price){
